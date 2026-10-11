@@ -1,0 +1,18 @@
+# machine-specific: service list, paths, keys, history
+server/config.json
+server/cheatsheets.json
+server/state.json
+server/alerts.jsonl
+server/helm.log
+server/*.tmp
+__pycache__/
+*.pyc
+.pytest_cache/
+# iOS build output
+*.ipa
+build/
+DerivedData/
+*.xcodeproj/
+.DS_Store
+ios/Sources/Info.plist
+backup/

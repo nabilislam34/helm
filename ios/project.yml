@@ -1,0 +1,49 @@
+name: Helm
+options:
+  bundleIdPrefix: dev.helm
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  Helm:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Helm
+        CFBundleShortVersionString: "0.1"
+        UILaunchScreen: {}
+        CFBundleURLTypes:
+          - CFBundleURLName: dev.helm.app
+            CFBundleURLSchemes: [helm]
+        NSLocalNetworkUsageDescription: Connects to the Helm service on your PC over the local network.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.helm.app
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+  HelmUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Tests/UITests]
+    dependencies:
+      - target: Helm
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.helm.app.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Helm
+        TARGETED_DEVICE_FAMILY: "1,2"
+schemes:
+  Helm:
+    build:
+      targets:
+        Helm: all
+        HelmUITests: [test]
+    test:
+      targets: [HelmUITests]

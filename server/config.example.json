@@ -1,0 +1,115 @@
+{
+ "port": 8775,
+ "key": "choose-a-key",
+ "registry_module": "",
+ "services": {
+  "my_api": {
+   "group": "Servers",
+   "match": [
+    "my_api.py"
+   ],
+   "launch": [
+    "C:\\Python313\\python.exe",
+    "my_api.py"
+   ],
+   "cwd": "C:\\projects\\my api",
+   "port": 8000,
+   "watch": true,
+   "ram_limit_mb": 1500
+  },
+  "file_watcher": {
+   "group": "Watchers",
+   "match": [
+    "file_watcher.ps1"
+   ],
+   "launch": [
+    "pwsh.exe",
+    "-NoProfile",
+    "-File",
+    "C:\\projects\\file_watcher.ps1"
+   ]
+  },
+  "chat_bot": {
+   "group": "Bots",
+   "match": [
+    "chat_bot.py"
+   ],
+   "task": "ChatBotTask",
+   "watch": true
+  }
+ },
+ "discover": [
+  {
+   "prefix": "web_",
+   "script": "web_server.py",
+   "group": "Web",
+   "launch": [
+    "C:\\Python313\\python.exe",
+    "web_server.py",
+    "{port}"
+   ],
+   "cwd": "C:\\projects\\web"
+  }
+ ],
+ "ahk_bridge": "",
+ "ahk_pins": [],
+ "ahk_mode_labels": [],
+ "userscripts": {
+  "folders": [
+   "C:\\projects\\userscripts"
+  ],
+  "cheatsheet": "",
+  "toggle_labels": {}
+ },
+ "command_targets": {
+  "default": "http://127.0.0.1:9000/cmd"
+ },
+ "commands_allowed": [
+  "status",
+  "run",
+  "stop"
+ ],
+ "command_toggles": [],
+ "command_fields": [],
+ "command_choices": {},
+ "command_mirror": {},
+ "quick": {
+  "backup": {
+   "label": "Run backup",
+   "launch": [
+    "C:\\Python313\\python.exe",
+    "backup.py"
+   ],
+   "cwd": "C:\\projects"
+  }
+ },
+ "usage": {},
+ "count_folders": {
+  "Pictures": "C:\\Users\\me\\Pictures"
+ },
+ "es": {
+  "path": "C:\\tools\\es.exe",
+  "instance": ""
+ },
+ "sqlite_counts": [
+  {
+   "label": "Items",
+   "path": "C:\\projects\\data.sqlite",
+   "table": "items"
+  }
+ ],
+ "crystaldiskinfo_dir": "C:\\tools\\CrystalDiskInfo",
+ "telegram": {
+  "enabled": false,
+  "token_file": "C:\\projects\\telegram_token.txt",
+  "chat_id": 123456789
+ },
+ "thresholds": {
+  "ram_percent": 92,
+  "disk_free_gb": 10,
+  "proc_ram_mb": 6000,
+  "disk_temp_c": 70,
+  "cooldown_min": 30
+ },
+ "watch_interval_s": 60
+}
