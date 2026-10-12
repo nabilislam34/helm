@@ -351,6 +351,7 @@ struct UserscriptRow: View {
                     Spacer()
                     Image(systemName: open ? "chevron.up" : "chevron.down").font(.caption).foregroundColor(.secondary)
                 }
+                .contentShape(Rectangle())      // the empty middle of the row is tappable too
             }
             .buttonStyle(.plain)
             .accessibilityIdentifier("us-" + script.s("name"))

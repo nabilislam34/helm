@@ -57,6 +57,7 @@ struct SettingsView: View {
                         .keyboardType(.URL).textInputAutocapitalization(.never).autocorrectionDisabled()
                         .accessibilityIdentifier("serverField")
                     SecureField("Key", text: $key)
+                        .textContentType(.oneTimeCode)      // stops the iOS "Save Password?" prompt
                         .textInputAutocapitalization(.never).autocorrectionDisabled()
                         .accessibilityIdentifier("keyField")
                 }
