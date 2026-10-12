@@ -42,6 +42,6 @@ Drive health is read from the status files CrystalDiskInfo already writes; Helm 
 
 ## iOS app
 
-Built with XcodeGen on GitHub Actions (`.github/workflows/build-ios.yml`), no Mac needed. The `build` job produces an unsigned `Helm.ipa` to sideload. The `uitest` job runs the app in an iOS Simulator against `ios/Tests/mock_server.py`; it runs when the commit message contains `[uitest]` or on a manual run.
+The project is set up to build with XcodeGen using GitHub Actions (.github/workflows/build-ios.yml), and it doesn’t require a Mac to run. The build job creates an unsigned Helm.ipa that you can sideload with Sideloadly, for example. Meanwhile, the uitest job runs the app in an iOS Simulator against ios/Tests/mock_server.py. This job triggers automatically if the commit message includes [uitest], or you can run it manually.
 
-On first launch the app asks for the PC address and key. A link of the form `helm://setup?server=192.168.1.10:8775&key=...` fills both in.
+When you first open the app, it prompts you for the PC address and key. You can use a link like helm://setup?server=192.168.1.10:8775&key=... to automatically fill in both fields.
