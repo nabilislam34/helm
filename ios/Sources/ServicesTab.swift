@@ -73,10 +73,12 @@ struct ServicesTab: View {
                 }
                 Button("Cancel", role: .cancel) {}
             }
-            // refreshes only while this tab is on screen and the app is in front
-            .task {
+            // refreshes only while this tab is on screen and the app is in front.
+            // Restarted when the app comes to the front and when Settings closes, so it never runs on stale values.
+            .task(id: "\(scenePhase == .active)-\(showSettings)") {
+                guard scenePhase == .active, !showSettings else { return }
                 while !Task.isCancelled {
-                    if scenePhase == .active { await load() }
+                    await load()
                     try? await Task.sleep(nanoseconds: 10_000_000_000)
                 }
             }

@@ -183,9 +183,15 @@ final class HelmUITests: XCTestCase {
         need(on, "switch row")
         XCTAssertEqual(el("toggleState-dryrun").label, "?")
         on.tap()
-        waitFor("switch reports ON") { self.el("toggleState-dryrun").label == "ON" }
-        el("toggleOff-dryrun").tap()
-        waitFor("switch reports OFF") { self.el("toggleState-dryrun").label == "OFF" }
+        // the "Last answer" section appears above and can push the row off screen
+        let switchState = el("toggleState-dryrun")
+        need(switchState, "switch row after On")
+        waitFor("switch reports ON") { switchState.exists && switchState.label == "ON" }
+        let off = el("toggleOff-dryrun")
+        need(off, "off button")
+        off.tap()
+        need(switchState, "switch row after Off")
+        waitFor("switch reports OFF") { switchState.exists && switchState.label == "OFF" }
         shot("commands")
     }
 
